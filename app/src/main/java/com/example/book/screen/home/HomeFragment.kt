@@ -11,13 +11,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
     }
 
     override fun initView() {
-
+        // todo
     }
 
     override fun initData() {
-
+        // todo
     }
-
 
     companion object {
         fun newInstance() = HomeFragment()

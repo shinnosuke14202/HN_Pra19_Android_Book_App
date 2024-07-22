@@ -32,5 +32,4 @@ abstract class BaseFragment<viewBinding : ViewBinding> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initData()
     }
-
 }

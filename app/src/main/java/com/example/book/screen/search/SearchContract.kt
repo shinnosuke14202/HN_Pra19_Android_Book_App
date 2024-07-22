@@ -3,11 +3,7 @@ package com.example.book.screen.search
 import com.example.book.utils.base.BasePresenter
 
 interface SearchContract {
-    interface Presenter : BasePresenter<View> {
+    interface Presenter : BasePresenter<View>
 
-    }
-
-    interface View {
-
-    }
+    interface View
 }
