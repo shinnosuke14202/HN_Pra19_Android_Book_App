@@ -13,26 +13,30 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class ParseJson {
-    fun bookParseJson(jsonObject: JSONObject) = Book().apply {
-        jsonObject.let {
-            id = it.getLong(ID)
-            title = it.getString(TITLE)
-            image = it.getString(IMAGE)
-            if (it.has(AUTHORS)) {
-                author =
-                    getDataFromJsonArray(it.getJSONArray(AUTHORS), AUTHOR_NAME)
-            }
-            if (it.has(RATING)) {
-                rating = it.getJSONObject(RATING).getString(AVERAGE)
-                    .toDouble() * 10.0
-            }
-            if (it.has(DESCRIPTION)) {
-                description = it.getString(DESCRIPTION)
+    fun bookParseJson(jsonObject: JSONObject) =
+        Book().apply {
+            jsonObject.let {
+                id = it.getLong(ID)
+                title = it.getString(TITLE)
+                image = it.getString(IMAGE)
+                if (it.has(AUTHORS)) {
+                    author =
+                        getDataFromJsonArray(it.getJSONArray(AUTHORS), AUTHOR_NAME)
+                }
+                if (it.has(RATING)) {
+                    rating = it.getJSONObject(RATING).getString(AVERAGE)
+                        .toDouble() * 10.0
+                }
+                if (it.has(DESCRIPTION)) {
+                    description = it.getString(DESCRIPTION)
+                }
             }
         }
-    }
 
-    private fun getDataFromJsonArray(jsonArray: JSONArray, keyEntity: String): String {
+    private fun getDataFromJsonArray(
+        jsonArray: JSONArray,
+        keyEntity: String,
+    ): String {
         val data = StringBuilder()
         for (i in 0 until jsonArray.length()) {
             val obj = jsonArray.getJSONObject(i)

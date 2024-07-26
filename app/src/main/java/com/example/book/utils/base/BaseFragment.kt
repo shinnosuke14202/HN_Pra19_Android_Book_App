@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment<viewBinding : ViewBinding> : Fragment() {
-
     private lateinit var _viewBinding: viewBinding
     protected val viewBinding get() = _viewBinding
 
@@ -21,14 +20,17 @@ abstract class BaseFragment<viewBinding : ViewBinding> : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _viewBinding = inflateViewBinding(inflater)
         initView()
         return viewBinding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         initData()
     }
