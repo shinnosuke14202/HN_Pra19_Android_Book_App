@@ -13,5 +13,4 @@ abstract class BaseActivity : AppCompatActivity() {
 
     abstract fun getLayoutResourceId(): Int
     abstract fun initView()
-
 }
