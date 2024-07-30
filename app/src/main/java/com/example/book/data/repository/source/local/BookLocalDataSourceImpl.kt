@@ -20,8 +20,9 @@ class BookLocalDataSourceImpl : BookDataSource.Local {
     companion object {
         private var instance: BookLocalDataSourceImpl? = null
 
-        fun getInstance() = synchronized(this) {
-            instance ?: BookLocalDataSourceImpl().also { instance = it }
-        }
+        fun getInstance() =
+            synchronized(this) {
+                instance ?: BookLocalDataSourceImpl().also { instance = it }
+            }
     }
 }

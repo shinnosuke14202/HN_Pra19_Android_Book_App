@@ -19,26 +19,51 @@ interface BookDataSource {
      * Remote
      */
     interface Remote {
-        fun getBooksByTitle(listener: OnResultListener<List<Book>>, title: String)
+        fun getBooksByTitle(
+            listener: OnResultListener<List<Book>>,
+            title: String,
+        )
 
-        fun getBooksByAuthor(listener: OnResultListener<List<Book>>, author: String)
+        fun getBooksByAuthor(
+            listener: OnResultListener<List<Book>>,
+            author: String,
+        )
 
-        fun getBooksByGenres(listener: OnResultListener<List<Book>>, genres: String)
+        fun getBooksByGenres(
+            listener: OnResultListener<List<Book>>,
+            genres: String,
+        )
 
-        fun getTopBooksByYear(listener: OnResultListener<List<Book>>, year: String, number: Int)
+        fun getTopBooksByYear(
+            listener: OnResultListener<List<Book>>,
+            year: String,
+            number: Int,
+        )
 
-        fun getSimilarBooks(listener: OnResultListener<List<Book>>, id: String)
+        fun getSimilarBooks(
+            listener: OnResultListener<List<Book>>,
+            id: String,
+        )
 
-        fun getDetailBook(listener: OnResultListener<Book>, id: String)
+        fun getDetailBook(
+            listener: OnResultListener<Book>,
+            id: String,
+        )
 
-        fun sortBooksByRating(listener: OnResultListener<List<Book>>, title: String)
+        fun sortBooksByRating(
+            listener: OnResultListener<List<Book>>,
+            title: String,
+        )
 
-        fun sortBooksByYear(listener: OnResultListener<List<Book>>, year: String)
+        fun sortBooksByYear(
+            listener: OnResultListener<List<Book>>,
+            year: String,
+        )
 
         fun sortBooksByRatingAndYear(
             listener: OnResultListener<List<Book>>,
             title: String,
-            year: String
+            year: String,
         )
     }
 }

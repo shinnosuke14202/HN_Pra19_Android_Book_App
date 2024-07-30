@@ -6,5 +6,5 @@ data class Book(
     var author: String = "",
     var description: String = "",
     var image: String = "",
-    var rating: Double = 0.0
+    var rating: Double = 0.0,
 )

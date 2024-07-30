@@ -7,7 +7,10 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class ParseDataWithJson {
-    fun parseJsonToListData(jsonObject: JSONObject?, keyEntity: String): List<Book> {
+    fun parseJsonToListData(
+        jsonObject: JSONObject?,
+        keyEntity: String,
+    ): List<Book> {
         val data = mutableListOf<Book>()
         try {
             val jsonArray = jsonObject?.getJSONArray(keyEntity)

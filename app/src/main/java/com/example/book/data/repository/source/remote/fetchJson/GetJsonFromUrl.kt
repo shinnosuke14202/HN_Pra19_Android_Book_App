@@ -15,9 +15,8 @@ class GetJsonFromUrl<T>(
     private val urlString: String,
     private val keyEntity: String,
     private val listener: OnResultListener<T>,
-    private val getDataFromJson: (String, String) -> T?
+    private val getDataFromJson: (String, String) -> T?,
 ) {
-
     private val executor: Executor = Executors.newSingleThreadExecutor()
     private val mainHandler = Handler(Looper.getMainLooper())
     private var data: T? = null
@@ -70,11 +69,12 @@ class GetJsonFromUrl<T>(
         private const val TIME_OUT = 15000
         private const val METHOD_GET = "GET"
         private val instanceMap = mutableMapOf<String, GetJsonFromUrl<*>>()
+
         fun <T> getInstance(
             urlString: String,
             keyEntity: String,
             listener: OnResultListener<T>,
-            getDataFromJson: (String, String) -> T?
+            getDataFromJson: (String, String) -> T?,
         ): GetJsonFromUrl<T> {
             val key = "$urlString-$keyEntity"
             return instanceMap.getOrPut(key) {
