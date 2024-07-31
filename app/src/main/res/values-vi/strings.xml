@@ -1,0 +1,15 @@
+<resources>
+    <string name="my_books">Sách của tôi</string>
+    <string name="home">Trang chủ</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="favorite">Yêu thích</string>
+    <string name="loading">Đang tải…</string>
+    <string name="book_cover">Bìa sách</string>
+    <string name="greeting_text">Bạn đọc sách gì hôm nay?</string>
+    <string name="popular_label">Sách Nổi Tiếng</string>
+    <string name="author_label">Tác Giả Nổi Tiếng</string>
+    <string name="books">Các Sách</string>
+    <string name="see_more">Xem thêm >></string>
+    <string name="english">Tiếng Anh</string>
+    <string name="vietnamese">Tiếng Việt</string>
+</resources>
