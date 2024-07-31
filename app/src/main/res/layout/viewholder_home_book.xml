@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_20"
+    android:layout_marginTop="@dimen/dp_10"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dp_10"
+        app:cardElevation="@dimen/dp_4">
+
+        <ImageView
+            android:id="@+id/ivBookCover"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_170"
+            android:contentDescription="@string/book_cover"
+            android:scaleType="centerCrop"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:minLines="1"
+        android:padding="@dimen/dp_4"
+        android:text="@string/loading"
+        android:textSize="@dimen/sp_16" />
+
+</LinearLayout>

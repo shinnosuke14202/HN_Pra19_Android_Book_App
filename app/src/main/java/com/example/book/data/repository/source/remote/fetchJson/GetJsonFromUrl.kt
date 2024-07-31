@@ -2,6 +2,7 @@ package com.example.book.data.repository.source.remote.fetchJson
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.example.book.data.repository.OnResultListener
 import com.example.book.utils.BASE_API_KEY
 import java.io.BufferedReader
@@ -76,7 +77,8 @@ class GetJsonFromUrl<T>(
             listener: OnResultListener<T>,
             getDataFromJson: (String, String) -> T?,
         ): GetJsonFromUrl<T> {
-            val key = "$urlString-$keyEntity"
+            val key = "$urlString-$keyEntity-$listener"
+            Log.i("key", key)
             return instanceMap.getOrPut(key) {
                 GetJsonFromUrl(urlString, keyEntity, listener, getDataFromJson)
             } as GetJsonFromUrl<T>

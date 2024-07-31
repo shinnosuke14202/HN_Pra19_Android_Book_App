@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/miHome"
+        android:title="@string/home"
+        android:icon="@drawable/book"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/miSearch"
+        android:title="@string/search"
+        android:icon="@drawable/baseline_search_24"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/miFavorite"
+        android:title="@string/favorite"
+        android:icon="@drawable/baseline_favorite_border_24"
+        app:showAsAction="ifRoom"/>
+
+</menu>

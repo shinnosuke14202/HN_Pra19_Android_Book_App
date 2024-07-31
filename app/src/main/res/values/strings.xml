@@ -2,4 +2,16 @@
     <string name="app_name" translatable="false">Android-template</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="my_books">My Books</string>
+    <string name="loading">Loading…</string>
+    <string name="book_cover">book cover</string>
+    <string name="greeting_text">What are you reading today?</string>
+    <string name="popular_label">Popular Books</string>
+    <string name="books">Books</string>
+    <string name="see_more">See More >></string>
+    <string name="english">English</string>
+    <string name="vietnamese">Vietnamese</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="top_novels">Top Novels</string>
 </resources>
