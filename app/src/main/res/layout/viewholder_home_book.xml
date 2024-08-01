@@ -31,6 +31,7 @@
         android:maxLines="2"
         android:minLines="1"
         android:padding="@dimen/dp_4"
+        android:fontFamily="@font/worksans_bold"
         android:text="@string/loading"
         android:textSize="@dimen/sp_16" />
 
