@@ -79,15 +79,36 @@ class BookRepository(
      * Local
      */
     override fun getFavorites(listener: OnResultListener<List<Book>>) {
-        TODO("Not yet implemented")
+        local.getFavorites(listener)
     }
 
-    override fun addToFavorites(listener: OnResultListener<Book>) {
-        TODO("Not yet implemented")
+    override fun addToFavorites(
+        book: Book,
+        listener: OnResultListener<Book>,
+    ) {
+        local.addToFavorites(book, listener)
     }
 
-    override fun deleteFromFavorites(listener: OnResultListener<String>) {
-        TODO("Not yet implemented")
+    override fun deleteFromFavorites(
+        id: Long,
+        listener: OnResultListener<String>,
+    ) {
+        local.deleteFromFavorites(id, listener)
+    }
+
+    override fun getAllBooks(listener: OnResultListener<List<Book>>) {
+        local.getAllBooks(listener)
+    }
+
+    override fun deleteAllBooks(listener: OnResultListener<String>) {
+        local.deleteAllBooks(listener)
+    }
+
+    override fun addBooks(
+        books: List<Book>,
+        listener: OnResultListener<String>,
+    ) {
+        local.addBooks(books, listener)
     }
 
     companion object {

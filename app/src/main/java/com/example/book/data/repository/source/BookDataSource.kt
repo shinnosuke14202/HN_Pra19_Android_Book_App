@@ -10,9 +10,24 @@ interface BookDataSource {
     interface Local {
         fun getFavorites(listener: OnResultListener<List<Book>>)
 
-        fun addToFavorites(listener: OnResultListener<Book>)
+        fun addToFavorites(
+            book: Book,
+            listener: OnResultListener<Book>,
+        )
 
-        fun deleteFromFavorites(listener: OnResultListener<String>)
+        fun deleteFromFavorites(
+            id: Long,
+            listener: OnResultListener<String>,
+        )
+
+        fun getAllBooks(listener: OnResultListener<List<Book>>)
+
+        fun deleteAllBooks(listener: OnResultListener<String>)
+
+        fun addBooks(
+            books: List<Book>,
+            listener: OnResultListener<String>,
+        )
     }
 
     /**
