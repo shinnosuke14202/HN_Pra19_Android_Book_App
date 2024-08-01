@@ -17,6 +17,12 @@ import com.example.book.data.model.Book
 import com.example.book.databinding.ItemFavoriteBookBinding
 
 class FavoriteAdapter : ListAdapter<Book, FavoriteAdapter.FavoriteBookViewHolder>(BookDiffUtil()) {
+    private var onClick: OnClickFavoriteBook? = null
+
+    fun setOnClick(onClick: OnClickFavoriteBook) {
+        this.onClick = onClick
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -34,7 +40,7 @@ class FavoriteAdapter : ListAdapter<Book, FavoriteAdapter.FavoriteBookViewHolder
         holder.bindData(getItem(position))
     }
 
-    class FavoriteBookViewHolder(private val binding: ItemFavoriteBookBinding) :
+    inner class FavoriteBookViewHolder(private val binding: ItemFavoriteBookBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindData(book: Book) {
             binding.tvName.text = book.title
@@ -71,6 +77,14 @@ class FavoriteAdapter : ListAdapter<Book, FavoriteAdapter.FavoriteBookViewHolder
                     },
                 )
                 .into(binding.ivCover)
+
+            binding.root.setOnClickListener {
+                onClick?.onClickToDetailBook(book)
+            }
+
+            binding.ivMarkdown.setOnClickListener {
+                onClick?.onClickUnMarkdown(book)
+            }
         }
     }
 }
@@ -89,4 +103,10 @@ class BookDiffUtil : DiffUtil.ItemCallback<Book>() {
     ): Boolean {
         return oldItem == newItem
     }
+}
+
+interface OnClickFavoriteBook {
+    fun onClickUnMarkdown(book: Book)
+
+    fun onClickToDetailBook(book: Book)
 }

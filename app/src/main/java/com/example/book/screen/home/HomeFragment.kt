@@ -135,7 +135,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
             HomePresenter(
                 BookRepository.getInstance(
                     BookRemoteDataSourceImpl.getInstance(),
-                    BookLocalDataSourceImpl.getInstance(),
+                    BookLocalDataSourceImpl.getInstance(requireContext()),
                 ),
             )
         homePresenter.setView(this)

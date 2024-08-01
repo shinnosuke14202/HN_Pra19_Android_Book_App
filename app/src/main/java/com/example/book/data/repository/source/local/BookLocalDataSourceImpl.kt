@@ -62,6 +62,17 @@ class BookLocalDataSourceImpl(private val dbHelper: DatabaseHelper) : BookDataSo
         }
     }
 
+    override fun isFavoriteBook(
+        id: Long,
+        listener: OnResultListener<Boolean>,
+    ) {
+        try {
+            listener.onSuccess(dbHelper.isFavorite(id))
+        } catch (e: Exception) {
+            listener.onError(e)
+        }
+    }
+
     companion object {
         private var instance: BookLocalDataSourceImpl? = null
 

@@ -111,6 +111,13 @@ class BookRepository(
         local.addBooks(books, listener)
     }
 
+    override fun isFavoriteBook(
+        id: Long,
+        listener: OnResultListener<Boolean>,
+    ) {
+        local.isFavoriteBook(id, listener)
+    }
+
     companion object {
         private var instance: BookRepository? = null
 

@@ -1,13 +1,75 @@
 package com.example.book.screen.favorite
 
 import com.example.book.data.model.Book
+import com.example.book.data.repository.BookRepository
+import com.example.book.data.repository.OnResultListener
 
-class FavoritePresenter : FavoriteContract.Presenter {
+class FavoritePresenter(private val repository: BookRepository) : FavoriteContract.Presenter {
     private var view: FavoriteContract.View? = null
 
     override fun onStart() {
-        val books = getDummyBooks()
-        view?.onGetBooksSuccess(books)
+        loadFavoriteBooks()
+    }
+
+    override fun loadFavoriteBooks() {
+        repository.getFavorites(
+            object : OnResultListener<List<Book>> {
+                override fun onSuccess(data: List<Book>) {
+                    view?.onGetBooksSuccess(data)
+                }
+
+                override fun onError(exception: Exception) {
+                    view?.onError(exception)
+                }
+            },
+        )
+    }
+
+    override fun addFavoriteBook(book: Book) {
+        repository.addToFavorites(
+            book,
+            object : OnResultListener<Book> {
+                override fun onSuccess(data: Book) {
+                    view?.onAddBookToFavorites(book)
+                    loadFavoriteBooks()
+                }
+
+                override fun onError(exception: Exception) {
+                    view?.onError(exception)
+                }
+            },
+        )
+    }
+
+    override fun deleteFavoriteBook(id: Long) {
+        repository.deleteFromFavorites(
+            id,
+            object : OnResultListener<String> {
+                override fun onSuccess(data: String) {
+                    view?.onDeleteBookFromFavorites(id)
+                    loadFavoriteBooks()
+                }
+
+                override fun onError(exception: Exception) {
+                    view?.onError(exception)
+                }
+            },
+        )
+    }
+
+    override fun checkIfFavorite(id: Long) {
+        repository.isFavoriteBook(
+            id,
+            object : OnResultListener<Boolean> {
+                override fun onSuccess(data: Boolean) {
+                    view?.onCheckFavoriteBook(data)
+                }
+
+                override fun onError(exception: java.lang.Exception) {
+                    view?.onError(exception)
+                }
+            },
+        )
     }
 
     override fun onStop() {
@@ -15,92 +77,5 @@ class FavoritePresenter : FavoriteContract.Presenter {
 
     override fun setView(view: FavoriteContract.View?) {
         this.view = checkNotNull(view)
-    }
-
-    private fun getDummyBooks(): List<Book> {
-        val books =
-            listOf(
-                Book(
-                    1,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-                Book(
-                    2,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-                Book(
-                    3,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-                Book(
-                    4,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-                Book(
-                    5,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-                Book(
-                    6,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-                Book(
-                    7,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-                Book(
-                    8,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-                Book(
-                    9,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-                Book(
-                    10,
-                    "Title",
-                    "Author",
-                    "Description",
-                    "https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg",
-                    4.5,
-                ),
-            )
-        return books
     }
 }

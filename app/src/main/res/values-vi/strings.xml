@@ -12,4 +12,5 @@
     <string name="search">Tìm Kiếm</string>
     <string name="favorite">Yêu Thích</string>
     <string name="top_novels">Tiểu Thuyết</string>
+    <string name="error_occurred">Đã xảy ra lỗi</string>
 </resources>
