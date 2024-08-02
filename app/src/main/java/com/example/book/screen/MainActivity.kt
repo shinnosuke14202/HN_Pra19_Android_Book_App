@@ -9,6 +9,7 @@ import com.example.book.R
 import com.example.book.databinding.ActivityMainBinding
 import com.example.book.screen.favorite.FavoriteFragment
 import com.example.book.screen.home.HomeFragment
+import com.example.book.screen.search.SearchFragment
 import com.example.book.utils.ENG
 import com.example.book.utils.SELECTED_LANGUAGE
 import com.example.book.utils.SETTINGS
@@ -50,6 +51,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewBinding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.miHome -> setNextFragment(HomeFragment.newInstance())
+                R.id.miSearch -> setNextFragment(SearchFragment.newInstance())
                 R.id.miFavorite -> setNextFragment(FavoriteFragment.newInstance())
             }
             true

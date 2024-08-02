@@ -13,4 +13,11 @@
     <string name="favorite">Yêu Thích</string>
     <string name="top_novels">Tiểu Thuyết</string>
     <string name="error_occurred">Đã xảy ra lỗi</string>
+    <string name="search_hint" >Gợi ý tìm kiếm</string>
+    <string name="search_results" >Kết quả</string>
+    <string name="search_see_all">Xem thêm</string>
+    <string name="radio_button_title">Tác giả</string>
+    <string name="radio_button_author">Nhà Văn</string>
+    <string name="radio_button_genres" >Thể Loại</string>
+    <string name="chose_search">Tìm kiếm theo</string>
 </resources>
