@@ -53,28 +53,6 @@ class BookRepository(
         remote.getDetailBook(listener, id)
     }
 
-    override fun sortBooksByRating(
-        listener: OnResultListener<List<Book>>,
-        title: String,
-    ) {
-        remote.sortBooksByRating(listener, title)
-    }
-
-    override fun sortBooksByYear(
-        listener: OnResultListener<List<Book>>,
-        year: String,
-    ) {
-        remote.sortBooksByYear(listener, year)
-    }
-
-    override fun sortBooksByRatingAndYear(
-        listener: OnResultListener<List<Book>>,
-        title: String,
-        year: String,
-    ) {
-        remote.sortBooksByRatingAndYear(listener, title, year)
-    }
-
     /**
      * Local
      */

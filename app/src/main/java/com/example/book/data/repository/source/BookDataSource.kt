@@ -69,21 +69,5 @@ interface BookDataSource {
             listener: OnResultListener<Book>,
             id: String,
         )
-
-        fun sortBooksByRating(
-            listener: OnResultListener<List<Book>>,
-            title: String,
-        )
-
-        fun sortBooksByYear(
-            listener: OnResultListener<List<Book>>,
-            year: String,
-        )
-
-        fun sortBooksByRatingAndYear(
-            listener: OnResultListener<List<Book>>,
-            title: String,
-            year: String,
-        )
     }
 }
