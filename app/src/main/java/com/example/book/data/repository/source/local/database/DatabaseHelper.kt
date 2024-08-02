@@ -49,15 +49,21 @@ class DatabaseHelper(context: Context) :
 
     fun addFavorite(book: Book) {
         val db = this.writableDatabase
-        val values =
-            ContentValues().apply {
-                put(COLUMN_TITLE, book.title)
-                put(COLUMN_AUTHOR, book.author)
-                put(COLUMN_DESCRIPTION, book.description)
-                put(COLUMN_IMAGE, book.image)
-                put(COLUMN_RATING, book.rating)
-            }
-        db.insert(TABLE_FAVORITE, null, values)
+
+        val exist = isFavorite(book.id)
+        if (!exist) {
+            val values =
+                ContentValues().apply {
+                    put(COLUMN_ID, book.id)
+                    put(COLUMN_TITLE, book.title)
+                    put(COLUMN_AUTHOR, book.author)
+                    put(COLUMN_DESCRIPTION, book.description)
+                    put(COLUMN_IMAGE, book.image)
+                    put(COLUMN_RATING, book.rating)
+                }
+            db.insert(TABLE_FAVORITE, null, values)
+        }
+
         db.close()
     }
 
@@ -102,6 +108,7 @@ class DatabaseHelper(context: Context) :
             for (book in books) {
                 val values =
                     ContentValues().apply {
+                        put(COLUMN_ID, book.id)
                         put(COLUMN_TITLE, book.title)
                         put(COLUMN_AUTHOR, book.author)
                         put(COLUMN_DESCRIPTION, book.description)
@@ -149,5 +156,14 @@ class DatabaseHelper(context: Context) :
         cursor.close()
         db.close()
         return booksList
+    }
+
+    fun isFavorite(id: Long): Boolean {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_FAVORITE WHERE $COLUMN_ID = ?", arrayOf(id.toString()))
+        val isFavorite = cursor.count > 0
+        cursor.close()
+        db.close()
+        return isFavorite
     }
 }

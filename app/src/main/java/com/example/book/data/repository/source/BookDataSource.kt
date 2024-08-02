@@ -28,6 +28,11 @@ interface BookDataSource {
             books: List<Book>,
             listener: OnResultListener<String>,
         )
+
+        fun isFavoriteBook(
+            id: Long,
+            listener: OnResultListener<Boolean>,
+        )
     }
 
     /**

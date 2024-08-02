@@ -14,4 +14,5 @@
     <string name="search">Search</string>
     <string name="favorite">Favorite</string>
     <string name="top_novels">Top Novels</string>
+    <string name="error_occurred">An error occurred</string>
 </resources>
