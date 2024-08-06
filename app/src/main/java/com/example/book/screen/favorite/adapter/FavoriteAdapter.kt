@@ -45,7 +45,7 @@ class FavoriteAdapter : ListAdapter<Book, FavoriteAdapter.FavoriteBookViewHolder
         fun bindData(book: Book) {
             binding.tvName.text = book.title
             binding.tvAuthor.text = book.author
-            binding.tvRating.text = book.rating.toString()
+            binding.tvRating.text = String.format("%.2f", book.rating)
 
             binding.pbCover.visibility = View.VISIBLE
 

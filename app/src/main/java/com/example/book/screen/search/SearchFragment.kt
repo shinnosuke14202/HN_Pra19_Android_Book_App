@@ -6,6 +6,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.book.R
 import com.example.book.data.model.Book
@@ -13,6 +14,7 @@ import com.example.book.data.repository.BookRepository
 import com.example.book.data.repository.source.local.BookLocalDataSourceImpl
 import com.example.book.data.repository.source.remote.BookRemoteDataSourceImpl
 import com.example.book.databinding.FragmentSearchBinding
+import com.example.book.screen.detail.DetailFragment
 import com.example.book.screen.search.adapter.SearchAdapter
 import com.example.book.utils.base.BaseFragment
 
@@ -29,7 +31,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchContract.Vie
     }
 
     private val searchAdapter: SearchAdapter by lazy {
-        SearchAdapter(listBook = mutableListOf())
+        SearchAdapter(listBook = mutableListOf(), onItemClick = this::onItemClicked)
     }
 
     override fun inflateViewBinding(inflater: LayoutInflater): FragmentSearchBinding {
@@ -92,5 +94,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchContract.Vie
 
     override fun onError(exception: Exception?) {
         Toast.makeText(requireContext(), exception?.message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun onItemClicked(book: Book) {
+        val context = requireContext()
+        if (context is FragmentActivity) {
+            val detailFragment = DetailFragment.newInstance(book.id.toInt())
+            context.supportFragmentManager.beginTransaction()
+                .replace(R.id.flContainer, detailFragment)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 }

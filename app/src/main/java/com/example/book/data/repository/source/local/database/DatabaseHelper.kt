@@ -49,21 +49,16 @@ class DatabaseHelper(context: Context) :
 
     fun addFavorite(book: Book) {
         val db = this.writableDatabase
-
-        val exist = isFavorite(book.id)
-        if (!exist) {
-            val values =
-                ContentValues().apply {
-                    put(COLUMN_ID, book.id)
-                    put(COLUMN_TITLE, book.title)
-                    put(COLUMN_AUTHOR, book.author)
-                    put(COLUMN_DESCRIPTION, book.description)
-                    put(COLUMN_IMAGE, book.image)
-                    put(COLUMN_RATING, book.rating)
-                }
-            db.insert(TABLE_FAVORITE, null, values)
-        }
-
+        val values =
+            ContentValues().apply {
+                put(COLUMN_ID, book.id)
+                put(COLUMN_TITLE, book.title)
+                put(COLUMN_AUTHOR, book.author)
+                put(COLUMN_DESCRIPTION, book.description)
+                put(COLUMN_IMAGE, book.image)
+                put(COLUMN_RATING, book.rating)
+            }
+        db.insert(TABLE_FAVORITE, null, values)
         db.close()
     }
 
