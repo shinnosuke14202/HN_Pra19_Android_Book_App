@@ -8,6 +8,7 @@ import com.example.book.data.repository.BookRepository
 import com.example.book.data.repository.source.local.BookLocalDataSourceImpl
 import com.example.book.data.repository.source.remote.BookRemoteDataSourceImpl
 import com.example.book.databinding.FragmentFavoriteBinding
+import com.example.book.screen.detail.DetailFragment
 import com.example.book.screen.favorite.adapter.FavoriteAdapter
 import com.example.book.screen.favorite.adapter.OnClickFavoriteBook
 import com.example.book.utils.base.BaseFragment
@@ -39,7 +40,11 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>(), FavoriteContra
                 }
 
                 override fun onClickToDetailBook(book: Book) {
-                    // to do: navigate to detail screen
+                    requireActivity().supportFragmentManager.beginTransaction().apply {
+                        replace(R.id.flContainer, DetailFragment.newInstance(book.id.toInt()))
+                        addToBackStack(null)
+                        commit()
+                    }
                 }
             },
         )

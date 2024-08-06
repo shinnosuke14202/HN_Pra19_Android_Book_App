@@ -7,10 +7,10 @@ import com.bumptech.glide.Glide
 import com.example.book.data.model.Book
 import com.example.book.databinding.ItemSearchBookBinding
 
-class SearchAdapter(
-    var listBook: List<Book>,
+class DetailAdapter(
+    private var listBook: List<Book>,
     private val onItemClick: (Book) -> Unit,
-) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<DetailAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -47,7 +47,9 @@ class SearchAdapter(
     }
 
     fun updateData(listBook: List<Book>) {
-        this.listBook = listBook
-        notifyDataSetChanged()
+        listBook?.let {
+            this.listBook = listBook
+            notifyDataSetChanged()
+        }
     }
 }

@@ -8,4 +8,5 @@
     <color name="text_bold_black">#333333</color>
     <color name="gray">#F4F4ED</color>
     <color name="color_search_hint">#828282</color>
+    <color name="light_black">#E5E5E5</color>
 </resources>

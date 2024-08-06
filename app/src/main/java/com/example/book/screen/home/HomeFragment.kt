@@ -23,6 +23,7 @@ import com.example.book.data.repository.source.remote.BookRemoteDataSourceImpl
 import com.example.book.databinding.FragmentHomeBinding
 import com.example.book.databinding.PopUpLanguagesBinding
 import com.example.book.screen.MainActivity
+import com.example.book.screen.detail.DetailFragment
 import com.example.book.screen.home.adapter.HomeBooksAdapter
 import com.example.book.screen.viewAll.ViewAllFragment
 import com.example.book.utils.ENG
@@ -88,10 +89,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
             }
         }
         homeBookAdapter.onClick = {
-            // todo
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flContainer, DetailFragment.newInstance(it.id.toInt()))
+                addToBackStack(null)
+                commit()
+            }
         }
         novelsAdapter.onClick = {
-            // todo
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flContainer, DetailFragment.newInstance(it.id.toInt()))
+                addToBackStack(null)
+                commit()
+            }
         }
     }
 
