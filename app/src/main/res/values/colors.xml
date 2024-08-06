@@ -6,4 +6,6 @@
     <color name="light_gray">#9797AA</color>
     <color name="text_normal_black">#000000</color>
     <color name="text_bold_black">#333333</color>
+    <color name="gray">#F4F4ED</color>
+    <color name="color_search_hint">#828282</color>
 </resources>

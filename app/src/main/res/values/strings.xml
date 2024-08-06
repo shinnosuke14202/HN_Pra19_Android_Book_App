@@ -15,4 +15,11 @@
     <string name="favorite">Favorite</string>
     <string name="top_novels">Top Novels</string>
     <string name="error_occurred">An error occurred</string>
+    <string name="search_hint" >Search</string>
+    <string name="search_results" >Results</string>
+    <string name="search_see_all" >See All</string>
+    <string name="radio_button_title" >Title</string>
+    <string name="radio_button_author" >Author</string>
+    <string name="radio_button_genres" >Genres</string>
+    <string name="chose_search" >Search by</string>
 </resources>
