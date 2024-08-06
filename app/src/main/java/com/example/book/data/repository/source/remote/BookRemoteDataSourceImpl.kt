@@ -97,49 +97,6 @@ class BookRemoteDataSourceImpl : BookDataSource.Remote {
         ).getDetailBook()
     }
 
-    override fun sortBooksByRating(
-        listener: OnResultListener<List<Book>>,
-        title: String,
-    ) {
-        GetJsonFromUrl.getInstance(
-            urlString = BASE_SEARCH + "query=$title" + "&sort=rating",
-            keyEntity = BOOKS,
-            listener = listener,
-            getDataFromJson = { response, keyEntity ->
-                ParseDataWithJson().parseJsonToListData(JSONObject(response), keyEntity)
-            },
-        ).getBooks(true)
-    }
-
-    override fun sortBooksByYear(
-        listener: OnResultListener<List<Book>>,
-        year: String,
-    ) {
-        GetJsonFromUrl.getInstance(
-            urlString = BASE_SEARCH + "earliest-publish-year=$year" + "&sort=rating",
-            keyEntity = BOOKS,
-            listener = listener,
-            getDataFromJson = { response, keyEntity ->
-                ParseDataWithJson().parseJsonToListData(JSONObject(response), keyEntity)
-            },
-        ).getBooks(true)
-    }
-
-    override fun sortBooksByRatingAndYear(
-        listener: OnResultListener<List<Book>>,
-        title: String,
-        year: String,
-    ) {
-        GetJsonFromUrl.getInstance(
-            urlString = BASE_SEARCH + "query=$title" + "earliest-publish-year=$year" + "&sort=rating",
-            keyEntity = BOOKS,
-            listener = listener,
-            getDataFromJson = { response, keyEntity ->
-                ParseDataWithJson().parseJsonToListData(JSONObject(response), keyEntity)
-            },
-        ).getBooks(true)
-    }
-
     companion object {
         private var instance: BookRemoteDataSourceImpl? = null
 

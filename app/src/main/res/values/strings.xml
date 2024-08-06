@@ -14,6 +14,8 @@
     <string name="search">Search</string>
     <string name="favorite">Favorite</string>
     <string name="top_novels">Top Novels</string>
+    <string name="sort_by_year">Sort By Year</string>
+    <string name="sort_by_rating">Sort By Rating</string>
     <string name="error_occurred">An error occurred</string>
     <string name="search_hint" >Search</string>
     <string name="search_results" >Results</string>

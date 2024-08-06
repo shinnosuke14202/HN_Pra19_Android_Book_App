@@ -3,6 +3,7 @@ package com.example.book.screen.home
 import android.app.Dialog
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,9 +24,13 @@ import com.example.book.databinding.FragmentHomeBinding
 import com.example.book.databinding.PopUpLanguagesBinding
 import com.example.book.screen.MainActivity
 import com.example.book.screen.home.adapter.HomeBooksAdapter
+import com.example.book.screen.viewAll.ViewAllFragment
 import com.example.book.utils.ENG
+import com.example.book.utils.NOVELS
+import com.example.book.utils.POPULAR
 import com.example.book.utils.SELECTED_LANGUAGE
 import com.example.book.utils.SETTINGS
+import com.example.book.utils.TYPE
 import com.example.book.utils.VIET
 import com.example.book.utils.base.BaseFragment
 
@@ -63,6 +69,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
                 VIET -> ivLanguageFlag.setImageResource(R.drawable.vn)
                 ENG -> ivLanguageFlag.setImageResource(R.drawable.en)
             }
+
+            tvPopularSeeMore.setOnClickListener {
+                moveToNextFragment(
+                    ViewAllFragment.newInstance(),
+                    Bundle().apply {
+                        putString(TYPE, POPULAR)
+                    },
+                )
+            }
+            tvNovelsSeeMore.setOnClickListener {
+                moveToNextFragment(
+                    ViewAllFragment.newInstance(),
+                    Bundle().apply {
+                        putString(TYPE, NOVELS)
+                    },
+                )
+            }
         }
         homeBookAdapter.onClick = {
             // todo
@@ -70,6 +93,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
         novelsAdapter.onClick = {
             // todo
         }
+    }
+
+    private fun moveToNextFragment(
+        fragment: Fragment,
+        bundle: Bundle,
+    ) {
+        activity?.supportFragmentManager
+            ?.beginTransaction()
+            ?.addToBackStack(fragment::javaClass.name)
+            ?.replace(
+                R.id.flContainer,
+                fragment.apply {
+                    arguments = bundle
+                },
+            )
+            ?.commit()
     }
 
     private fun createLanguagesDialog() {

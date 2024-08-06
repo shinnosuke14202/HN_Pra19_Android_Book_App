@@ -2,10 +2,12 @@ package com.example.book.data.repository.source.remote.fetchJson
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.example.book.data.repository.OnResultListener
 import com.example.book.utils.BASE_API_KEY
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
 import java.util.concurrent.Executor
@@ -44,25 +46,30 @@ class GetJsonFromUrl<T>(
     }
 
     private fun getJsonStringFromUrl(urlString: String): String {
-        val url = URL(urlString)
-        val httpURLConnection = url.openConnection() as? HttpURLConnection
-        httpURLConnection?.run {
-            connectTimeout = TIME_OUT
-            readTimeout = TIME_OUT
-            requestMethod = METHOD_GET
-            doOutput = true
-            connect()
-        }
+        try {
+            val url = URL(urlString)
+            val httpURLConnection = url.openConnection() as? HttpURLConnection
+            httpURLConnection?.run {
+                connectTimeout = TIME_OUT
+                readTimeout = TIME_OUT
+                requestMethod = METHOD_GET
+                doOutput = true
+                connect()
+            }
 
-        val bufferedReader = BufferedReader(InputStreamReader(url.openStream()))
-        val stringBuilder = StringBuilder()
-        var line: String?
-        while (bufferedReader.readLine().also { line = it } != null) {
-            stringBuilder.append(line)
+            val bufferedReader = BufferedReader(InputStreamReader(url.openStream()))
+            val stringBuilder = StringBuilder()
+            var line: String?
+            while (bufferedReader.readLine().also { line = it } != null) {
+                stringBuilder.append(line)
+            }
+            bufferedReader.close()
+            httpURLConnection?.disconnect()
+            return stringBuilder.toString()
+        } catch (e: Exception) {
+            Log.i("ERROR", e.toString())
+            return "{\"$keyEntity\": []}"
         }
-        bufferedReader.close()
-        httpURLConnection?.disconnect()
-        return stringBuilder.toString()
     }
 
     companion object {
